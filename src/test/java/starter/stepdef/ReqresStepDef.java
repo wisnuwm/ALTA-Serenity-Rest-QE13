@@ -42,4 +42,27 @@ public class ReqresStepDef {
     public void sendRequestPostCreateUser() {
         SerenityRest.when().post(ReqresAPI.POST_CREATE_USER);
     }
+
+    //scenario 3
+    @Given("Update user with valid id {int} and json {string}")
+    public void updateUserWithValidIdIdAndJson(int id, String json) {
+        File jsonUpdateUser = new File(Constants.REQ_BODY+json);
+        reqresAPI.updateUser(id, jsonUpdateUser);
+    }
+
+    @When("Send request update user")
+    public void sendRequestUpdateUser() {
+        SerenityRest.when().put(ReqresAPI.UPDATE_USER);
+    }
+
+    //scenario 4
+    @Given("Delete user with valid id {int}")
+    public void deleteUserWithValidIdId(int id) {
+        reqresAPI.deleteUser(id);
+    }
+
+    @When("Send request delete user")
+    public void sendRequestDeleteUser() {
+        SerenityRest.when().delete(ReqresAPI.DELETE_USER);
+    }
 }
